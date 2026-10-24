@@ -95,21 +95,21 @@ footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2
 .wheel-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
 .wheel-wrap::before{content:"";position:absolute;width:320px;height:320px;background:radial-gradient(circle,rgba(0,180,255,.3),transparent 70%);filter:blur(14px);animation:pulse 4s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:.45;transform:scale(.95);}50%{opacity:.9;transform:scale(1.04);}}
-.wheel-svg{width:300px;height:300px;filter:drop-shadow(0 0 16px rgba(0,180,255,.35));animation:steer 7s ease-in-out infinite;transform-origin:50% 50%;}
+.wheel-svg{width:300px;height:300px;filter:drop-shadow(0 0 16px rgba(0,180,255,.3));animation:steer 7s ease-in-out infinite;transform-origin:50% 50%;}
 @keyframes steer{0%,100%{transform:rotate(-9deg);}50%{transform:rotate(9deg);}}
-.hud-ring{fill:none;stroke:var(--border);stroke-width:1;stroke-dasharray:3 9;opacity:.45;}
-.hud-tick{stroke:var(--blue);stroke-width:2;opacity:.4;}
-.rim-leather{fill:none;stroke:url(#leatherGrad);stroke-width:34;stroke-linecap:round;}
-.rim-stitch{fill:none;stroke:var(--blue-2);stroke-width:1;stroke-dasharray:2 7;opacity:.5;}
-.rim-carbon{fill:none;stroke:url(#forgedCarbon);stroke-width:34;stroke-linecap:round;}
-.rim-carbon-edge{fill:none;stroke:var(--blue);stroke-width:1.5;opacity:.55;}
-.zone-seam{stroke:var(--blue);stroke-width:3;opacity:.6;stroke-linecap:round;}
+.hud-ring{fill:none;stroke:var(--border);stroke-width:1;stroke-dasharray:3 9;opacity:.35;}
+.hud-tick{stroke:var(--blue);stroke-width:2;opacity:.3;}
+.rim-suede{fill:none;stroke:url(#suedeGrad);stroke-width:34;stroke-linecap:round;stroke-linejoin:round;}
+.rim-stitch{fill:none;stroke:#F2EDE3;stroke-width:1;stroke-dasharray:2 7;opacity:.55;stroke-linejoin:round;}
 .zero-mark{stroke:var(--red);stroke-width:10;stroke-linecap:round;filter:drop-shadow(0 0 10px rgba(255,59,78,.55));}
-.spoke-base{stroke:url(#carbonWeave);stroke-width:22;stroke-linecap:round;}
-.spoke-edge{stroke:var(--blue);stroke-width:1.5;opacity:.5;stroke-linecap:round;}
+.spoke-base{stroke:#15171a;stroke-width:24;stroke-linecap:round;}
+.spoke-edge{stroke:var(--blue);stroke-width:1.5;opacity:.4;stroke-linecap:round;}
+.spoke-btn{fill:#0b0d10;stroke:var(--border-soft);stroke-width:.5;}
+.carbon-panel{fill:url(#carbonWeave);stroke:var(--blue);stroke-opacity:.45;stroke-width:1;}
 .hub-outer{fill:url(#hubGrad);stroke:var(--blue-2);stroke-width:2;}
-.hub-inner{fill:var(--surface-2);stroke:var(--blue);stroke-width:1.5;}
-.hub-label{font-family:var(--font-head);font-size:13px;fill:var(--blue-2);letter-spacing:1px;}
+.hub-face{fill:var(--surface);stroke:var(--border);stroke-width:1;}
+.hub-ring{fill:none;stroke:var(--blue);stroke-width:1;opacity:.45;}
+.hub-label{font-family:var(--font-head);font-weight:700;font-size:17px;fill:var(--blue-2);letter-spacing:2px;}
 @media (max-width:860px){.hero-grid{grid-template-columns:1fr;}.hero-visual{order:-1;}}
 
 .pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;}
@@ -178,20 +178,11 @@ footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2
               <rect width="5" height="5" fill="#1b2128"/>
               <rect x="5" y="5" width="5" height="5" fill="#1b2128"/>
             </pattern>
-            <filter id="forgedNoise" x="-20%" y="-20%" width="140%" height="140%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="11" result="n"/>
-              <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.04  0 0 0 0 0.06  0 0 0 0 0.09  0 0 0 1.4 -0.25"/>
-            </filter>
-            <pattern id="forgedCarbon" width="40" height="40" patternUnits="userSpaceOnUse">
-              <rect width="40" height="40" fill="#0b0e12"/>
-              <rect width="40" height="40" filter="url(#forgedNoise)"/>
-            </pattern>
-            <linearGradient id="leatherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#2a323d"/>
-              <stop offset="45%" stop-color="#3a4451"/>
-              <stop offset="55%" stop-color="#171c22"/>
-              <stop offset="100%" stop-color="#2a323d"/>
-            </linearGradient>
+            <radialGradient id="suedeGrad" cx="50%" cy="35%" r="75%">
+              <stop offset="0%" stop-color="#2b2e33"/>
+              <stop offset="70%" stop-color="#17191c"/>
+              <stop offset="100%" stop-color="#0d0e10"/>
+            </radialGradient>
             <radialGradient id="hubGrad" cx="35%" cy="30%" r="75%">
               <stop offset="0%" stop-color="#2c3744"/>
               <stop offset="60%" stop-color="#131922"/>
@@ -205,26 +196,27 @@ footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2
           <line x1="200" y1="378" x2="200" y2="396" class="hud-tick"/>
           <line x1="22" y1="200" x2="4" y2="200" class="hud-tick"/>
 
-          <path d="M329.9 125 A150 150 0 1 1 70.1 125" class="rim-leather"/>
-          <path d="M329.9 125 A150 150 0 1 1 70.1 125" class="rim-stitch"/>
-          <path d="M70.1 125 A150 150 0 0 1 329.9 125" class="rim-carbon"/>
-          <path d="M70.1 125 A150 150 0 0 1 329.9 125" class="rim-carbon-edge"/>
-
-          <line x1="310.9" y1="136" x2="348.9" y2="114" class="zone-seam"/>
-          <line x1="89.1" y1="136" x2="51.1" y2="114" class="zone-seam"/>
+          <path d="M88.2 300 A150 150 0 1 1 311.8 300 L88.2 300 Z" class="rim-suede"/>
+          <path d="M88.2 300 A150 150 0 1 1 311.8 300 L88.2 300 Z" class="rim-stitch"/>
 
           <line x1="200" y1="22" x2="200" y2="78" class="zero-mark"/>
 
-          <line x1="150" y1="200" x2="67" y2="200" class="spoke-base"/>
-          <line x1="250" y1="200" x2="333" y2="200" class="spoke-base"/>
-          <line x1="200" y1="250" x2="200" y2="333" class="spoke-base"/>
-          <line x1="150" y1="200" x2="67" y2="200" class="spoke-edge"/>
-          <line x1="250" y1="200" x2="333" y2="200" class="spoke-edge"/>
-          <line x1="200" y1="250" x2="200" y2="333" class="spoke-edge"/>
+          <line x1="152" y1="200" x2="67" y2="200" class="spoke-base"/>
+          <line x1="248" y1="200" x2="333" y2="200" class="spoke-base"/>
+          <line x1="152" y1="200" x2="67" y2="200" class="spoke-edge"/>
+          <line x1="248" y1="200" x2="333" y2="200" class="spoke-edge"/>
 
-          <circle cx="200" cy="200" r="46" class="hub-outer"/>
-          <circle cx="200" cy="200" r="22" class="hub-inner"/>
-          <text x="200" y="205" text-anchor="middle" class="hub-label">RS</text>
+          <rect x="92" y="189" width="16" height="8" rx="2" class="spoke-btn"/>
+          <rect x="92" y="203" width="16" height="8" rx="2" class="spoke-btn"/>
+          <rect x="292" y="189" width="16" height="8" rx="2" class="spoke-btn"/>
+          <rect x="292" y="203" width="16" height="8" rx="2" class="spoke-btn"/>
+
+          <polygon points="175,250 225,250 215,278 185,278" class="carbon-panel"/>
+
+          <circle cx="200" cy="200" r="48" class="hub-outer"/>
+          <circle cx="200" cy="200" r="36" class="hub-face"/>
+          <circle cx="200" cy="200" r="30" class="hub-ring"/>
+          <text x="200" y="207" text-anchor="middle" class="hub-label">RS</text>
         </svg>
       </div>
     </div>
