@@ -99,9 +99,9 @@ footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2
 @keyframes steer{0%,100%{transform:rotate(-9deg);}50%{transform:rotate(9deg);}}
 .hud-ring{fill:none;stroke:var(--border);stroke-width:1;stroke-dasharray:3 9;opacity:.35;}
 .hud-tick{stroke:var(--blue);stroke-width:2;opacity:.3;}
-.rim-suede{fill:none;stroke:url(#suedeGrad);stroke-width:34;stroke-linecap:round;stroke-linejoin:round;}
-.rim-stitch{fill:none;stroke:#F2EDE3;stroke-width:1;stroke-dasharray:2 7;opacity:.55;stroke-linejoin:round;}
-.zero-mark{stroke:var(--red);stroke-width:10;stroke-linecap:round;filter:drop-shadow(0 0 10px rgba(255,59,78,.55));}
+.rim-suede{fill:none;stroke:url(#suedeGrad);stroke-width:34;}
+.rim-stitch{fill:none;stroke:#F2EDE3;stroke-width:1;stroke-dasharray:2 7;opacity:.55;}
+.zero-mark{stroke:var(--red);stroke-width:9;stroke-linecap:round;filter:drop-shadow(0 0 8px rgba(255,59,78,.5));}
 .spoke-base{stroke:#15171a;stroke-width:24;stroke-linecap:round;}
 .spoke-edge{stroke:var(--blue);stroke-width:1.5;opacity:.4;stroke-linecap:round;}
 .spoke-btn{fill:#0b0d10;stroke:var(--border-soft);stroke-width:.5;}
@@ -196,10 +196,10 @@ footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2
           <line x1="200" y1="378" x2="200" y2="396" class="hud-tick"/>
           <line x1="22" y1="200" x2="4" y2="200" class="hud-tick"/>
 
-          <path d="M88.2 300 A150 150 0 1 1 311.8 300 L88.2 300 Z" class="rim-suede"/>
-          <path d="M88.2 300 A150 150 0 1 1 311.8 300 L88.2 300 Z" class="rim-stitch"/>
+          <circle cx="200" cy="200" r="150" class="rim-suede"/>
+          <circle cx="200" cy="200" r="150" class="rim-stitch"/>
 
-          <line x1="200" y1="22" x2="200" y2="78" class="zero-mark"/>
+          <line x1="200" y1="37.5" x2="200" y2="62.5" class="zero-mark"/>
 
           <line x1="152" y1="200" x2="67" y2="200" class="spoke-base"/>
           <line x1="248" y1="200" x2="333" y2="200" class="spoke-base"/>
@@ -211,7 +211,7 @@ footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2
           <rect x="292" y="189" width="16" height="8" rx="2" class="spoke-btn"/>
           <rect x="292" y="203" width="16" height="8" rx="2" class="spoke-btn"/>
 
-          <polygon points="175,250 225,250 215,278 185,278" class="carbon-panel"/>
+          <polygon points="185,248 215,248 218,333 182,333" class="carbon-panel"/>
 
           <circle cx="200" cy="200" r="48" class="hub-outer"/>
           <circle cx="200" cy="200" r="36" class="hub-face"/>
