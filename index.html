@@ -90,15 +90,23 @@ footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2
 .hero-text h1{font-size:clamp(32px,5vw,52px);}
 .hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;}
 .hero-visual{display:flex;justify-content:center;}
+
 .wheel-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
-.wheel-wrap::before{content:"";position:absolute;width:320px;height:320px;background:radial-gradient(circle,rgba(0,180,255,.35),transparent 70%);filter:blur(10px);animation:pulse 3.4s ease-in-out infinite;}
-@keyframes pulse{0%,100%{opacity:.5;transform:scale(.95);}50%{opacity:1;transform:scale(1.05);}}
-.wheel-svg{width:300px;height:300px;animation:spin 50s linear infinite;filter:drop-shadow(0 0 18px rgba(0,180,255,.45));}
-@keyframes spin{to{transform:rotate(360deg);}}
-.wheel-rim{fill:none;stroke:var(--blue);stroke-width:6;}
-.wheel-hub{fill:var(--surface-2);stroke:var(--blue-2);stroke-width:3;}
-.wheel-spoke{stroke:var(--blue-2);stroke-width:5;stroke-linecap:round;}
-.wheel-track{fill:none;stroke:var(--border);stroke-width:1;stroke-dasharray:4 10;}
+.wheel-wrap::before{content:"";position:absolute;width:320px;height:320px;background:radial-gradient(circle,rgba(0,180,255,.3),transparent 70%);filter:blur(14px);animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:.45;transform:scale(.95);}50%{opacity:.9;transform:scale(1.04);}}
+.wheel-svg{width:300px;height:300px;filter:drop-shadow(0 0 16px rgba(0,180,255,.35));animation:steer 7s ease-in-out infinite;transform-origin:50% 50%;}
+@keyframes steer{0%,100%{transform:rotate(-9deg);}50%{transform:rotate(9deg);}}
+.hud-ring{fill:none;stroke:var(--border);stroke-width:1;stroke-dasharray:3 9;opacity:.45;}
+.hud-tick{stroke:var(--blue);stroke-width:2;opacity:.4;}
+.rim-leather{fill:none;stroke:url(#leatherGrad);stroke-width:34;stroke-linecap:round;}
+.rim-stitch{fill:none;stroke:var(--blue-2);stroke-width:1;stroke-dasharray:2 7;opacity:.5;}
+.rim-carbon{fill:none;stroke:url(#carbonWeave);stroke-width:34;stroke-linecap:round;}
+.rim-carbon-edge{fill:none;stroke:var(--blue);stroke-width:1.5;opacity:.55;}
+.spoke-base{stroke:url(#carbonWeave);stroke-width:22;stroke-linecap:round;}
+.spoke-edge{stroke:var(--blue);stroke-width:1.5;opacity:.5;stroke-linecap:round;}
+.hub-outer{fill:url(#hubGrad);stroke:var(--blue-2);stroke-width:2;}
+.hub-inner{fill:var(--surface-2);stroke:var(--blue);stroke-width:1.5;}
+.hub-label{font-family:var(--font-head);font-size:13px;fill:var(--blue-2);letter-spacing:1px;}
 @media (max-width:860px){.hero-grid{grid-template-columns:1fr;}.hero-visual{order:-1;}}
 
 .pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;}
@@ -161,12 +169,46 @@ footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2
     <div class="hero-visual reveal">
       <div class="wheel-wrap">
         <svg viewBox="0 0 400 400" class="wheel-svg" aria-hidden="true">
-          <circle cx="200" cy="200" r="150" class="wheel-track"/>
-          <circle cx="200" cy="200" r="150" class="wheel-rim"/>
-          <line x1="200" y1="200" x2="200" y2="58" class="wheel-spoke"/>
-          <line x1="200" y1="200" x2="68" y2="282" class="wheel-spoke"/>
-          <line x1="200" y1="200" x2="332" y2="282" class="wheel-spoke"/>
-          <circle cx="200" cy="200" r="46" class="wheel-hub"/>
+          <defs>
+            <pattern id="carbonWeave" width="10" height="10" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+              <rect width="10" height="10" fill="#0b0e12"/>
+              <rect width="5" height="5" fill="#1b2128"/>
+              <rect x="5" y="5" width="5" height="5" fill="#1b2128"/>
+            </pattern>
+            <linearGradient id="leatherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#2a323d"/>
+              <stop offset="45%" stop-color="#3a4451"/>
+              <stop offset="55%" stop-color="#171c22"/>
+              <stop offset="100%" stop-color="#2a323d"/>
+            </linearGradient>
+            <radialGradient id="hubGrad" cx="35%" cy="30%" r="75%">
+              <stop offset="0%" stop-color="#2c3744"/>
+              <stop offset="60%" stop-color="#131922"/>
+              <stop offset="100%" stop-color="#05070a"/>
+            </radialGradient>
+          </defs>
+
+          <circle cx="200" cy="200" r="185" class="hud-ring"/>
+          <line x1="200" y1="22" x2="200" y2="4" class="hud-tick"/>
+          <line x1="378" y1="200" x2="396" y2="200" class="hud-tick"/>
+          <line x1="200" y1="378" x2="200" y2="396" class="hud-tick"/>
+          <line x1="22" y1="200" x2="4" y2="200" class="hud-tick"/>
+
+          <path d="M103.5 314.9 A150 150 0 1 1 296.5 314.9" class="rim-leather"/>
+          <path d="M103.5 314.9 A150 150 0 1 1 296.5 314.9" class="rim-stitch"/>
+          <path d="M296.5 314.9 A150 150 0 0 1 103.5 314.9" class="rim-carbon"/>
+          <path d="M296.5 314.9 A150 150 0 0 1 103.5 314.9" class="rim-carbon-edge"/>
+
+          <line x1="150" y1="200" x2="67" y2="200" class="spoke-base"/>
+          <line x1="250" y1="200" x2="333" y2="200" class="spoke-base"/>
+          <line x1="200" y1="250" x2="200" y2="333" class="spoke-base"/>
+          <line x1="150" y1="200" x2="67" y2="200" class="spoke-edge"/>
+          <line x1="250" y1="200" x2="333" y2="200" class="spoke-edge"/>
+          <line x1="200" y1="250" x2="200" y2="333" class="spoke-edge"/>
+
+          <circle cx="200" cy="200" r="46" class="hub-outer"/>
+          <circle cx="200" cy="200" r="22" class="hub-inner"/>
+          <text x="200" y="205" text-anchor="middle" class="hub-label">RS</text>
         </svg>
       </div>
     </div>
