@@ -20,6 +20,7 @@
   --blue:#00B4FF;
   --blue-2:#5CD3FF;
   --blue-deep:#0077B6;
+  --red:#FF3B4E;
   --border:rgba(0,180,255,.18);
   --border-soft:rgba(234,244,251,.08);
   --glow:0 0 30px rgba(0,180,255,.35);
@@ -100,8 +101,10 @@ footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2
 .hud-tick{stroke:var(--blue);stroke-width:2;opacity:.4;}
 .rim-leather{fill:none;stroke:url(#leatherGrad);stroke-width:34;stroke-linecap:round;}
 .rim-stitch{fill:none;stroke:var(--blue-2);stroke-width:1;stroke-dasharray:2 7;opacity:.5;}
-.rim-carbon{fill:none;stroke:url(#carbonWeave);stroke-width:34;stroke-linecap:round;}
+.rim-carbon{fill:none;stroke:url(#forgedCarbon);stroke-width:34;stroke-linecap:round;}
 .rim-carbon-edge{fill:none;stroke:var(--blue);stroke-width:1.5;opacity:.55;}
+.zone-seam{stroke:var(--blue);stroke-width:3;opacity:.6;stroke-linecap:round;}
+.zero-mark{stroke:var(--red);stroke-width:10;stroke-linecap:round;filter:drop-shadow(0 0 10px rgba(255,59,78,.55));}
 .spoke-base{stroke:url(#carbonWeave);stroke-width:22;stroke-linecap:round;}
 .spoke-edge{stroke:var(--blue);stroke-width:1.5;opacity:.5;stroke-linecap:round;}
 .hub-outer{fill:url(#hubGrad);stroke:var(--blue-2);stroke-width:2;}
@@ -175,6 +178,14 @@ footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2
               <rect width="5" height="5" fill="#1b2128"/>
               <rect x="5" y="5" width="5" height="5" fill="#1b2128"/>
             </pattern>
+            <filter id="forgedNoise" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="11" result="n"/>
+              <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.04  0 0 0 0 0.06  0 0 0 0 0.09  0 0 0 1.4 -0.25"/>
+            </filter>
+            <pattern id="forgedCarbon" width="40" height="40" patternUnits="userSpaceOnUse">
+              <rect width="40" height="40" fill="#0b0e12"/>
+              <rect width="40" height="40" filter="url(#forgedNoise)"/>
+            </pattern>
             <linearGradient id="leatherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#2a323d"/>
               <stop offset="45%" stop-color="#3a4451"/>
@@ -194,10 +205,15 @@ footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2
           <line x1="200" y1="378" x2="200" y2="396" class="hud-tick"/>
           <line x1="22" y1="200" x2="4" y2="200" class="hud-tick"/>
 
-          <path d="M103.5 314.9 A150 150 0 1 1 296.5 314.9" class="rim-leather"/>
-          <path d="M103.5 314.9 A150 150 0 1 1 296.5 314.9" class="rim-stitch"/>
-          <path d="M296.5 314.9 A150 150 0 0 1 103.5 314.9" class="rim-carbon"/>
-          <path d="M296.5 314.9 A150 150 0 0 1 103.5 314.9" class="rim-carbon-edge"/>
+          <path d="M329.9 125 A150 150 0 1 1 70.1 125" class="rim-leather"/>
+          <path d="M329.9 125 A150 150 0 1 1 70.1 125" class="rim-stitch"/>
+          <path d="M70.1 125 A150 150 0 0 1 329.9 125" class="rim-carbon"/>
+          <path d="M70.1 125 A150 150 0 0 1 329.9 125" class="rim-carbon-edge"/>
+
+          <line x1="310.9" y1="136" x2="348.9" y2="114" class="zone-seam"/>
+          <line x1="89.1" y1="136" x2="51.1" y2="114" class="zone-seam"/>
+
+          <line x1="200" y1="22" x2="200" y2="78" class="zero-mark"/>
 
           <line x1="150" y1="200" x2="67" y2="200" class="spoke-base"/>
           <line x1="250" y1="200" x2="333" y2="200" class="spoke-base"/>
