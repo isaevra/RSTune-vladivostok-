@@ -3,162 +3,198 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ламинация карбоном — RS Tune</title>
-<meta name="description" content="Ламинация карбоновой плёнкой деталей интерьера и экстерьера автомобиля. Цена от 3 000 ₽ за деталь. Портфолио и контакты RS Tune.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛞</text></svg>">
+<title>Ламинация карбоном | RS Tune</title>
+<meta name="description" content="Ламинация карбоновой плёнкой деталей интерьера и экстерьера автомобиля. Цена от 3 000 ₽ за деталь.">
+<link rel="icon" href="data:image/svg+xml,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#15130F; --surface:#1E1B16; --surface-2:#242019;
-    --text:#F2EDE3; --text-2:#A79C8A;
-    --accent:#C81E3A; --accent-2:#C79A5B;
-    --border:rgba(242,237,227,.14);
-    --font-head:'Oswald',sans-serif; --font-body:'Manrope',sans-serif;
-  }
-  *,*::before,*::after{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.6;}
-  a{color:inherit;}
-  .wrap{max-width:1120px; margin:0 auto; padding-left:24px; padding-right:24px;}
+:root{
+  --bg:#05070A;
+  --bg-2:#0A0F16;
+  --surface:#0D141D;
+  --surface-2:#111B27;
+  --text:#EAF4FB;
+  --text-2:#8CA3B5;
+  --blue:#00B4FF;
+  --blue-2:#5CD3FF;
+  --blue-deep:#0077B6;
+  --border:rgba(0,180,255,.18);
+  --border-soft:rgba(234,244,251,.08);
+  --glow:0 0 30px rgba(0,180,255,.35);
+  --font-head:'Unbounded',sans-serif;
+  --font-body:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
+h1,h2,h3{font-family:var(--font-head);font-weight:700;line-height:1.15;margin:0 0 16px;}
+p{margin:0 0 16px;}
 
-  header.site{position:sticky; top:0; z-index:20; background:rgba(21,19,15,.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--border);}
-  .nav{display:flex; align-items:center; justify-content:space-between; padding:20px 0; gap:16px;}
-  .logo{font-family:var(--font-head); font-weight:700; font-size:20px; text-decoration:none; letter-spacing:.02em;}
-  .logo::before{content:"— "; color:var(--accent-2);}
-  .nav-links{display:flex; gap:30px; list-style:none; margin:0; padding:0;}
-  .nav-links a{color:var(--text-2); text-decoration:none; font-size:15px;}
-  .nav-links a:hover, .nav-links a.active{color:var(--text);}
-  .nav-links a.active{border-bottom:2px solid var(--accent);}
-  .cta{display:inline-block; font:600 14px/1 var(--font-body); background:var(--accent); color:#fff; padding:14px 24px; text-decoration:none; border:1px solid var(--accent); white-space:nowrap;}
-  .cta:hover{background:#a91831;}
-  .cta.ghost{background:transparent; color:var(--text); border-color:var(--border);}
-  .cta.ghost:hover{border-color:var(--text-2);}
-  .burger{display:none; background:none; border:1px solid var(--border); color:var(--text); width:40px; height:40px; font-size:18px; cursor:pointer;}
-  @media (max-width:800px){
-    .nav-links{display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; gap:0; background:var(--surface); border-bottom:1px solid var(--border); padding:8px 24px;}
-    .nav-links.open{display:flex;}
-    .nav-links a{padding:14px 0; border-bottom:1px solid var(--border);}
-    .nav-links a:last-child{border-bottom:none;}
-    .nav .cta{display:none;}
-    .burger{display:block;}
-  }
+.bg-fx{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;background:var(--bg);}
+.bg-fx::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,180,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,180,255,.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 40%,transparent 100%);}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.35;animation:float 16s ease-in-out infinite;}
+.orb-1{width:420px;height:420px;background:var(--blue);top:-140px;left:-120px;}
+.orb-2{width:360px;height:360px;background:var(--blue-deep);bottom:-160px;right:-100px;animation-delay:-7s;}
+@keyframes float{0%,100%{transform:translate(0,0);}50%{transform:translate(36px,-28px);}}
 
-  section{padding:56px 0;}
-  h1,h2,h3{font-family:var(--font-head); font-weight:600; margin:0 0 16px; line-height:1.1;}
-  h1{font-size:clamp(30px,4.4vw,44px); text-transform:uppercase;}
-  h2{font-size:clamp(22px,3vw,28px);}
-  p{margin:0 0 16px; color:var(--text-2);}
-  .lede{font-size:16px; max-width:64ch;}
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(5,7,10,.7);border-bottom:1px solid var(--border-soft);}
+.nav-row{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;}
+.logo{font-family:var(--font-head);font-weight:700;font-size:19px;letter-spacing:.5px;}
+.logo span{color:var(--blue);}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{position:relative;font-size:14px;font-weight:500;color:var(--text-2);padding:6px 2px;transition:color .25s ease;}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;box-shadow:0 0 8px var(--blue);}
+.nav-links a:hover,.nav-links a.active{color:var(--text);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:0;}
+.burger span{display:block;width:100%;height:2px;background:var(--text);transition:transform .3s ease,opacity .3s ease;}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-  .carbon-swatch{width:18px; height:18px; flex:0 0 auto; border:1px solid var(--border); background-color:#111; display:inline-block; vertical-align:middle; margin-right:10px;
-    background-image:
-      repeating-linear-gradient(45deg, rgba(255,255,255,.18) 0 2px, transparent 2px 5px),
-      repeating-linear-gradient(-45deg, rgba(0,0,0,.55) 0 2px, transparent 2px 5px);
-  }
+@media (max-width:860px){
+  .burger{display:flex;}
+  .nav-links{position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);background:var(--bg-2);border-left:1px solid var(--border);flex-direction:column;align-items:flex-start;justify-content:center;gap:28px;padding:40px;transform:translateX(100%);transition:transform .35s ease;}
+  .nav-links.open{transform:translateX(0);}
+  .nav-links a{font-size:18px;}
+}
 
-  .examples{list-style:none; margin:24px 0 0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px 24px; font-size:15px;}
-  .examples li{padding:14px 0; border-top:1px solid var(--border);}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,color .25s ease,border-color .25s ease;border:1px solid transparent;}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue-deep));color:#01131C;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--glow);}
+.btn-ghost{position:relative;overflow:hidden;border-color:var(--border);color:var(--text);z-index:1;}
+.btn-ghost::before{content:"";position:absolute;inset:0;background:var(--blue);z-index:-1;transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
+.btn-ghost:hover{color:#01131C;border-color:var(--blue);}
+.btn-ghost:hover::before{transform:scaleX(1);}
 
-  .price-box{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--accent); padding:30px 28px; margin-top:8px;}
-  .price-big{font-family:var(--font-head); font-size:38px; color:var(--accent); margin:0 0 10px;}
-  .price-big span{font-size:15px; color:var(--text-2); font-family:var(--font-body); margin-left:8px; text-transform:none;}
-  .price-box p{margin:0; font-size:14px;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:none;}
 
-  .empty{background:var(--surface); border:1px solid var(--border); padding:40px 32px;}
-  .empty h3{font-size:18px; margin-bottom:8px;}
-  .empty p{font-size:14px; margin-bottom:20px;}
+section{padding:96px 0;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-2);margin-bottom:18px;}
+.eyebrow::before{content:"";width:20px;height:1px;background:var(--blue);}
+.lede{color:var(--text-2);font-size:17px;max-width:560px;}
 
-  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:24px;}
-  @media (max-width:700px){ .contact-grid{grid-template-columns:1fr;} }
-  .contact-list{list-style:none; margin:0; padding:0;}
-  .contact-list li{padding:14px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; gap:16px; font-size:15px;}
-  .contact-list span:first-child{color:var(--text-2);}
-  .contact-list a{text-decoration:none; color:var(--text);}
-  .contact-list a:hover{color:var(--accent-2);}
+.card{background:var(--surface);border:1px solid var(--border-soft);border-radius:18px;padding:32px;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;}
+.card:hover{transform:translateY(-6px);border-color:var(--border);box-shadow:0 20px 50px -20px rgba(0,180,255,.3);}
 
-  .cta-block{text-align:center; border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
-  .cta-block h2{margin-bottom:10px;}
-  .cta-block p{max-width:50ch; margin-left:auto; margin-right:auto;}
+footer{border-top:1px solid var(--border-soft);padding:40px 0;color:var(--text-2);font-size:13px;}
+.foot-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;}
 
-  footer{border-top:1px solid var(--border); padding:32px 0; font-size:13px; color:var(--text-2);}
-  .foot-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+.page-hero{padding:72px 0 48px;}
+.page-hero h1{font-size:clamp(28px,4.5vw,44px);}
+
+.lam-what{padding-top:0;}
+.lam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+.lam-item{background:var(--surface);border:1px solid var(--border-soft);border-radius:14px;padding:22px 20px;font-weight:600;transition:border-color .3s ease,transform .3s ease;position:relative;overflow:hidden;}
+.lam-item::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(0,180,255,.06) 0 4px,transparent 4px 8px);opacity:0;transition:opacity .3s ease;}
+.lam-item:hover{border-color:var(--border);transform:translateY(-4px);}
+.lam-item:hover::before{opacity:1;}
+@media (max-width:860px){.lam-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:520px){.lam-grid{grid-template-columns:1fr;}}
+
+.price{padding-top:0;}
+.price-box{display:flex;justify-content:space-between;align-items:center;gap:32px;background:linear-gradient(135deg,var(--surface),var(--surface-2));border:1px solid var(--border);border-radius:24px;padding:44px;flex-wrap:wrap;}
+.price-box h2{color:var(--blue-2);font-size:clamp(26px,4vw,36px);}
+
+.empty-card{background:var(--surface);border:1px dashed var(--border);border-radius:18px;padding:40px;text-align:center;}
+
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
+.contact-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;}
+.contact-list li{display:flex;justify-content:space-between;border-bottom:1px solid var(--border-soft);padding-bottom:10px;}
+.contact-list span{color:var(--text-2);}
+.contact-list a{color:var(--blue-2);font-weight:600;}
+.contact-cta-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:32px;}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
+<div class="bg-fx"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
 
-<header class="site">
-  <nav class="nav wrap">
-    <a class="logo" href="index.html">RS TUNE</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Главная</a></li>
-      <li><a href="uslugi.html">Услуги</a></li>
-      <li><a class="active" href="karbon.html">Карбон</a></li>
-      <li><a href="index.html#portfolio">Портфолио</a></li>
-      <li><a href="#contact">Контакты</a></li>
-    </ul>
-    <a class="cta" href="#contact">Оставить заявку</a>
-    <button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false">☰</button>
-  </nav>
+<header class="nav" id="siteNav">
+  <div class="wrap nav-row">
+    <a class="logo" href="index.html">RS<span>TUNE</span></a>
+    <button class="burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Главная</a>
+      <a href="uslugi.html">Услуги</a>
+      <a href="karbon.html" class="active">Карбон</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </div>
 </header>
 
-<div class="wrap">
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow reveal">Карбон</p>
+    <h1 class="reveal">Ламинация карбоновой плёнкой</h1>
+    <p class="lede reveal">Оклеиваем карбоном детали интерьера и экстерьера — от зеркал до молдингов. Плёнка повторяет форму детали и держит фактуру годами.</p>
+  </div>
+</section>
 
-  <section>
-    <h1><span class="carbon-swatch"></span>Ламинация карбоном</h1>
-    <p class="lede">Покрываем карбоновой плёнкой детали интерьера и экстерьера автомобиля — передаём фактуру настоящего карбона и защищаем поверхность детали. Работаем как с отдельными элементами, так и с комплектами.</p>
-  </section>
-
-  <section id="examples" style="padding-top:0;">
-    <h2>Что можно ламинировать</h2>
-    <ul class="examples">
-      <li>Зеркала заднего вида</li>
-      <li>Молдинги и накладки дверей</li>
-      <li>Решётка радиатора</li>
-      <li>Элементы салона: кольца дефлекторов, накладки панели</li>
-      <li>Спойлеры и сплиттеры</li>
-      <li>Другие детали — по согласованию</li>
-    </ul>
-  </section>
-
-  <section id="price" style="padding-top:0;">
-    <h2>Цены</h2>
-    <div class="price-box">
-      <p class="price-big">от 3 000 ₽<span>за деталь</span></p>
-      <p>Точная стоимость зависит от размера, формы и сложности демонтажа детали. Итоговую цену назовём после диагностики или по присланным фото.</p>
+<section class="lam-what">
+  <div class="wrap">
+    <p class="eyebrow reveal">Что можно ламинировать</p>
+    <div class="lam-grid">
+      <div class="lam-item reveal">Зеркала</div>
+      <div class="lam-item reveal">Молдинги</div>
+      <div class="lam-item reveal">Решётка радиатора</div>
+      <div class="lam-item reveal">Элементы салона</div>
+      <div class="lam-item reveal">Спойлеры</div>
+      <div class="lam-item reveal">Другое — по согласованию</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="portfolio">
-    <h2>Портфолио</h2>
-    <div class="empty">
+<section class="price">
+  <div class="wrap">
+    <div class="price-box reveal">
+      <div>
+        <p class="eyebrow">Стоимость</p>
+        <h2>от 3 000 ₽ за деталь</h2>
+        <p class="lede">Финальная цена зависит от размера и сложности детали — определяем после диагностики или по фото.</p>
+      </div>
+      <a class="btn btn-primary" href="index.html#contact">Отправить фото детали</a>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="portfolio">
+  <div class="wrap">
+    <p class="eyebrow reveal">Портфолио</p>
+    <div class="empty-card reveal">
       <h3>Мастерская только открывается</h3>
-      <p>Первые готовые работы по ламинации появятся здесь в ближайшее время. Хотите попасть в число первых клиентов — оставьте заявку уже сейчас.</p>
-      <a class="cta ghost" href="#contact">Оставить заявку</a>
+      <p class="lede">Примеры ламинации появятся здесь в ближайшее время. Хотите один из первых проектов — пишите.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="contact">
-    <h2>Контакты</h2>
-    <div class="contact-grid">
-      <div>
-        <p class="lede">Оставьте заявку любым удобным способом — ответим и договоримся о диагностике детали.</p>
-        <ul class="contact-list">
-          <li><span>Телефон</span><a href="tel:+79000000000">+7 900 000-00-00</a></li>
-          <li><span>Telegram</span><a href="https://t.me/rstune">@rstune</a></li>
-          <li><span>Instagram</span><a href="https://instagram.com/rs.tune">@rs.tune</a></li>
-          <li><span>Email</span><a href="mailto:hello@rstune.ru">hello@rstune.ru</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="lede">Работаем по записи, в собственном гараже. Точный адрес и время подскажем при согласовании визита.</p>
-        <a class="cta" href="tel:+79000000000">Позвонить</a>
-      </div>
+<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <p class="eyebrow">Контакты</p>
+      <h2>Оставьте заявку</h2>
+      <p class="lede">Оставьте заявку любым удобным способом — ответим в течение дня.</p>
+      <ul class="contact-list">
+        <li><span>Телефон</span><a href="tel:+79000000000">+7 900 000-00-00</a></li>
+        <li><span>Telegram</span><a href="https://t.me/rstune" target="_blank" rel="noopener">@rstune</a></li>
+        <li><span>Instagram</span><a href="https://instagram.com/rs.tune" target="_blank" rel="noopener">@rs.tune</a></li>
+        <li><span>Email</span><a href="mailto:hello@rstune.ru">hello@rstune.ru</a></li>
+      </ul>
     </div>
-  </section>
-
-</div>
+    <div class="reveal contact-cta-card">
+      <p class="lede">Работаем по записи, в собственной мастерской.</p>
+      <a class="btn btn-primary" href="tel:+79000000000">Позвонить</a>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap foot-row">
@@ -168,13 +204,19 @@
 </footer>
 
 <script>
-  var burgerBtn = document.getElementById('burgerBtn');
-  var navLinks = document.getElementById('navLinks');
-  burgerBtn.addEventListener('click', function(){
-    var open = navLinks.classList.toggle('open');
-    burgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
+var burgerBtn=document.getElementById('burgerBtn');
+var navLinks=document.getElementById('navLinks');
+burgerBtn.addEventListener('click',function(){
+  var open=navLinks.classList.toggle('open');
+  burgerBtn.setAttribute('aria-expanded',open?'true':'false');
+});
+navLinks.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click',function(){navLinks.classList.remove('open');burgerBtn.setAttribute('aria-expanded','false');});
+});
+var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 </script>
-
 </body>
 </html>
